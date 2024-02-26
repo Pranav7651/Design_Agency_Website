@@ -15,7 +15,7 @@ function loadingAnimation(){
             setInterval(function(){
                 if(grow < 100) h5Timer.innerHTML = grow++;
                 else h5Timer.innerHTML = grow;
-            },24);
+            },10);
         }
     })
 
@@ -34,7 +34,7 @@ function loadingAnimation(){
         delay:0.2,
         y:1600,
         opacity:0,
-        duration:1.2,
+        duration:0.6,
         ease: "sine.Out",
     });
 
@@ -42,6 +42,30 @@ function loadingAnimation(){
         display: "none",
     });
 
+    tl.from("#nav",{
+        opacity:0,
+    });
+
+    tl.from("#hero1 h1,#hero2 h1,#hero3 h2,#hero3 h3,#hero4 h1",{
+        opacity:0,
+        stagger: 0.25,
+        y:120,
+        stagger: 0.2
+    })
+
 }
 
+function cursorAnimation(){
+    document.addEventListener("mousemove",function(dets){
+        gsap.to("#crsr",{
+            left:dets.x,
+            top:dets.y,
+        });
+    });
+    
+    Shery.makeMagnet("#nav-part2 h4");
+}
+
+
 loadingAnimation();
+cursorAnimation();
